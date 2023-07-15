@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 let {dbConnect,getData,postData,updateOrder,deleteOrder} = require('./controller/dbcontroller')
 
-app.use(bodyParser.json());
+app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(cors())
 
@@ -20,11 +20,10 @@ app.get('/cities',async(req,res) => {
     let output = await getData(collection,query)
     res.send(output)
 })
-
 app.get('/Category',async(req,res) => {
     let query= {}
-    if(req.query.stateId){
-        query ={state_id : Number(req.query.stateId)}
+    if(req.query.MovieId){
+        query ={"Movies.Movie_id": Number(req.query.MovieId)}
     }
     else{
         query ={}
