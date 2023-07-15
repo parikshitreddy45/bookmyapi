@@ -25,8 +25,8 @@ app.get('/Category',async(req,res) => {
     if(req.query.MovieId){
         query ={"Movies.Movie_id": Number(req.query.MovieId)}
     }
-    else{
-        query ={}
+    elseif(req.query.StateId){
+        query ={"state_id":Number(req.query.StateId)}
     }
     let collection = "Category";
     let output = await getData(collection,query);
